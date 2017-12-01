@@ -17,7 +17,12 @@ const fuga = async () => {
 
 const hoge = async () => {
     console.log('---b---');
-    synth.triggerAttackRelease('C5', '8n');
+    synth.triggerAttackRelease('C5', '16n');
+    };
+
+const beep = async (key, num) => {
+    console.log('---b---');
+    synth.triggerAttackRelease(key, num.toString() + 'n');
     };
 
 
@@ -25,6 +30,12 @@ const init = async () => {
     await fuga();
     await sleep(1000);
     await hoge();
+    await sleep(1000);
+    for(var i=1; i<10;i++) {
+        await beep('C'+(i % 10).toString(), i);
+        await sleep(10 + Math.random() * 100);
+        console.log(10 + Math.random() * 100);
+    }
 };
 
 init();
